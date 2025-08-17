@@ -1,0 +1,10 @@
+<h1>Marvel Superheroes</h1>
+<a href="{% url 'hero_add' %}">Add Superhero</a>
+<ul>
+  {% for hero in heroes %}
+    <li>
+      <img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="100">
+      <a href="{% url 'hero_detail' hero.pk %}">{{ hero.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
