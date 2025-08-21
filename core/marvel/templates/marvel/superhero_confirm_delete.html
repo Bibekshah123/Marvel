@@ -1,6 +1,28 @@
-<h2>Delete {{ object.name }}?</h2>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Yes, delete</button>
-</form>
-<a href="{% url 'hero_list' %}">Cancel</a>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete {{ object.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+
+<div class="container py-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-0 p-4 bg-light text-dark text-center" style="max-width: 500px;">
+        <h2 class="text-danger fw-bold mb-3">⚠️ Delete Superhero</h2>
+        <p class="fs-5">Are you sure you want to delete <strong>{{ object.name }}</strong>?</p>
+
+        <!-- Action Buttons -->
+        <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger px-4 me-2">🗑️ Yes, Delete</button>
+        </form>
+        <a href="{% url 'hero_list' %}" class="btn btn-secondary px-4">❌ Cancel</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,10 +1,40 @@
-<h1>Marvel Superheroes</h1>
-<a href="{% url 'hero_add' %}">Add Superhero</a>
-<ul>
-  {% for hero in heroes %}
-    <li>
-      <img src="{{ hero.image.url }}" alt="{{ hero.name }}" width="100">
-      <a href="{% url 'hero_detail' hero.pk %}">{{ hero.name }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marvel Superheroes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold text-danger">Marvel Superheroes</h1>
+        <a href="{% url 'hero_add' %}" class="btn btn-danger">➕ Add Superhero</a>
+    </div>
+
+    <div class="row g-4">
+        {% for hero in heroes %}
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 h-100">
+                    <img src="{{ hero.image.url }}" class="card-img-top" alt="{{ hero.name }}" style="height: 300px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">{{ hero.name }}</h5>
+                        <p class="card-text text-muted">{{ hero.power }}</p>
+                        <a href="{% url 'hero_detail' hero.pk %}" class="btn btn-outline-danger btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">No superheroes found. Add one now!</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
