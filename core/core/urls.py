@@ -7,6 +7,7 @@ from django.contrib import admin
 urlpatterns = [
     path('', include('marvel.urls')),
     path('admin/', admin.site.urls),
+    path('api/', include('marvel.api_urls')),
 
 ]
 

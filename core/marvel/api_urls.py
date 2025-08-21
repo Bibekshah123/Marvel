@@ -1,0 +1,7 @@
+from django.urls import path
+from .api_view import SuperheroListCreateAPIView, SuperheroRetrieveUpdateDestroyAPIView
+
+urlpatterns = [
+    path('heroes/', SuperheroListCreateAPIView.as_view(), name='api_hero_list'),
+    path('heroes/<int:pk>/', SuperheroRetrieveUpdateDestroyAPIView.as_view(), name='api_hero_detail'),
+]
