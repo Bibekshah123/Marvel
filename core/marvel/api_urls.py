@@ -3,7 +3,7 @@ from .api_view import SuperheroListCreateAPIView, SuperheroRetrieveUpdateDestroy
 
 
 urlpatterns = [
-    path('heroes/', SuperheroListCreateAPIView.as_view(), name='api_hero_list'),
+    path('<str:version>/heroes/', SuperheroListCreateAPIView.as_view(), name='api_hero_list'),
     path('heroes/<int:pk>/', SuperheroRetrieveUpdateDestroyAPIView.as_view(), name='api_hero_detail'),
     path('signup/', UserSignupView.as_view(), name='signup'),
 ]
